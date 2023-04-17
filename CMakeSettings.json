@@ -15,7 +15,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x64-Debug-Translations",
@@ -37,7 +38,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x64-Debug-SDL1",
@@ -55,7 +57,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x64-Release",
@@ -73,7 +76,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x86-Debug",
@@ -90,7 +94,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x86-Release",
@@ -108,7 +113,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     },
     {
       "name": "x64-Debug-WSL-GCC",
@@ -128,7 +134,8 @@
           "value": "True",
           "type": "BOOL"
         }
-      ]
+      ],
+      "cmakeToolchain": "C:/Users/leonl/vcpkg/scripts/buildsystems/vcpkg.cmake"
     }
   ]
 }

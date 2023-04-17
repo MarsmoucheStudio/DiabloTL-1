@@ -698,6 +698,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
+			case HeroClass::Cleric:
 				object._oVar2 = TEXT_BOOKA;
 				break;
 			case HeroClass::Rogue:
@@ -718,6 +719,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
+			case HeroClass::Cleric:
 				object._oVar2 = TEXT_BOOKB;
 				break;
 			case HeroClass::Rogue:
@@ -738,6 +740,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
+			case HeroClass::Cleric:
 				object._oVar2 = TEXT_BOOKC;
 				break;
 			case HeroClass::Rogue:
@@ -2065,6 +2068,9 @@ void OperateChamberOfBoneBook(Object &questBook, bool sendmsg)
 	case HeroClass::Barbarian:
 		textdef = TEXT_BONER;
 		break;
+	case HeroClass::Cleric:
+		textdef = TEXT_BONER;
+		break;
 	}
 	if (sendmsg) {
 		Quests[Q_SCHAMB]._qmsg = textdef;
@@ -2840,6 +2846,9 @@ void OperateShrineOily(Player &player, Point spawnPosition)
 		ModifyPlrMag(player, 2);
 		break;
 	case HeroClass::Barbarian:
+		ModifyPlrVit(player, 2);
+		break;
+	case HeroClass::Cleric:
 		ModifyPlrVit(player, 2);
 		break;
 	case HeroClass::Monk:
@@ -3879,6 +3888,9 @@ void InitObjects()
 				case HeroClass::Barbarian:
 					spId = TEXT_BLINDING;
 					break;
+				case HeroClass::Cleric:
+					spId = TEXT_BLINDING;
+					break;
 				}
 				Quests[Q_BLIND]._qmsg = spId;
 				AddBookLever(OBJ_BLINDBOOK, { SetPiece.position, SetPiece.size + 1 }, spId);
@@ -3903,6 +3915,9 @@ void InitObjects()
 					spId = TEXT_RBLOODY;
 					break;
 				case HeroClass::Barbarian:
+					spId = TEXT_BLOODY;
+					break;
+				case HeroClass::Cleric:
 					spId = TEXT_BLOODY;
 					break;
 				}

@@ -652,7 +652,7 @@ bool PlrHitMonst(Player &player, Monster &monster, bool adjacentDamage = false)
 	dam += player._pIBonusDamMod;
 	int dam2 = dam << 6;
 	dam += player._pDamageMod;
-	if (player._pClass == HeroClass::Warrior || player._pClass == HeroClass::Barbarian) {
+	if (player._pClass == HeroClass::Warrior || player._pClass == HeroClass::Barbarian || player._pClass == HeroClass::Cleric) {
 		if (GenerateRnd(100) < player._pLevel) {
 			dam *= 2;
 		}
@@ -819,7 +819,7 @@ bool PlrHitPlr(Player &attacker, Player &target)
 	dam += (dam * attacker._pIBonusDam) / 100;
 	dam += attacker._pIBonusDamMod + attacker._pDamageMod;
 
-	if (attacker._pClass == HeroClass::Warrior || attacker._pClass == HeroClass::Barbarian) {
+	if (attacker._pClass == HeroClass::Warrior || attacker._pClass == HeroClass::Barbarian || attacker._pClass == HeroClass::Cleric) {
 		if (GenerateRnd(100) < attacker._pLevel) {
 			dam *= 2;
 		}
@@ -1832,7 +1832,7 @@ void Player::RestorePartialLife()
 {
 	int wholeHitpoints = _pMaxHP >> 6;
 	int l = ((wholeHitpoints / 8) + GenerateRnd(wholeHitpoints / 4)) << 6;
-	if (IsAnyOf(_pClass, HeroClass::Warrior, HeroClass::Barbarian))
+	if (IsAnyOf(_pClass, HeroClass::Warrior, HeroClass::Barbarian, HeroClass::Cleric))
 		l *= 2;
 	if (IsAnyOf(_pClass, HeroClass::Rogue, HeroClass::Monk, HeroClass::Bard))
 		l += l / 2;
@@ -2272,7 +2272,7 @@ void SetPlrAnims(Player &player)
 	player._pSFrames = plrAtkAnimData.castingFrames;
 	player._pSFNum = plrAtkAnimData.castingActionFrame;
 	int armorGraphicIndex = player._pgfxnum & ~0xFU;
-	if (IsAnyOf(pc, HeroClass::Warrior, HeroClass::Barbarian)) {
+	if (IsAnyOf(pc, HeroClass::Warrior, HeroClass::Barbarian, HeroClass::Cleric)) {
 		if (gn == PlayerWeaponGraphic::Bow && leveltype != DTYPE_TOWN)
 			player._pNFrames = 8;
 		if (armorGraphicIndex > 0)
@@ -2316,7 +2316,7 @@ void CreatePlayer(Player &player, HeroClass c)
 	player._pBaseToBlk = PlayersData[static_cast<std::size_t>(c)].blockBonus;
 
 	player._pHitPoints = (player._pVitality + 10) << 6;
-	if (player._pClass == HeroClass::Warrior || player._pClass == HeroClass::Barbarian) {
+	if (player._pClass == HeroClass::Warrior || player._pClass == HeroClass::Barbarian || player._pClass == HeroClass::Cleric) {
 		player._pHitPoints *= 2;
 	} else if (player._pClass == HeroClass::Rogue || player._pClass == HeroClass::Monk || player._pClass == HeroClass::Bard) {
 		player._pHitPoints += player._pHitPoints / 2;
@@ -2377,6 +2377,7 @@ void CreatePlayer(Player &player, HeroClass c)
 	case HeroClass::Warrior:
 	case HeroClass::Bard:
 	case HeroClass::Barbarian:
+	case HeroClass::Cleric:
 		animWeaponId = PlayerWeaponGraphic::SwordShield;
 		break;
 	case HeroClass::Rogue:
@@ -2821,6 +2822,7 @@ StartPlayerKill(Player &player, int earflag)
 						case HeroClass::Monk:
 						case HeroClass::Bard:
 						case HeroClass::Barbarian:
+						case HeroClass::Cleric:
 							ear._iCurs = ICURS_EAR_ROGUE;
 							break;
 						}

@@ -2850,6 +2850,18 @@ void CreatePlrItems(Player &player)
 		InitializeItem(player.SpdList[1], IDI_HEAL);
 		GenerateNewSeed(player.SpdList[1]);
 		break;
+	case HeroClass::Cleric:
+		InitializeItem(player.InvBody[INVLOC_HAND_LEFT], IDI_BARBARIAN);
+		GenerateNewSeed(player.InvBody[INVLOC_HAND_LEFT]);
+
+		InitializeItem(player.InvBody[INVLOC_HAND_RIGHT], IDI_WARRSHLD);
+		GenerateNewSeed(player.InvBody[INVLOC_HAND_RIGHT]);
+		InitializeItem(player.SpdList[0], IDI_HEAL);
+		GenerateNewSeed(player.SpdList[0]);
+
+		InitializeItem(player.SpdList[1], IDI_HEAL);
+		GenerateNewSeed(player.SpdList[1]);
+		break;
 	}
 
 	Item &goldItem = player.InvList[player._pNumInv];
@@ -4187,6 +4199,10 @@ void SpawnBoy(int lvl)
 					ivalue = INT_MAX;
 				break;
 			case HeroClass::Barbarian:
+				if (IsAnyOf(itemType, ItemType::Bow, ItemType::Staff))
+					ivalue = INT_MAX;
+				break;
+			case HeroClass::Cleric:
 				if (IsAnyOf(itemType, ItemType::Bow, ItemType::Staff))
 					ivalue = INT_MAX;
 				break;

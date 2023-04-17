@@ -62,9 +62,9 @@ if(NOT VERSION_SUFFIX)
   set(VERSION_SUFFIX "debug")
 endif()
 if(VERSION_NUM MATCHES untagged)
-  project(Theodore's Lair LANGUAGES C CXX)
+  project(Theodore LANGUAGES C CXX)
 else()
-  project(Theodore's lair
+  project(Theodore
     VERSION ${VERSION_NUM}
     LANGUAGES C CXX)
 endif()
